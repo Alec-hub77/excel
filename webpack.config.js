@@ -20,8 +20,8 @@ const jsLoaders = () => {
   ];
   if (isDev) {
     loaders.push('eslint-loader');
-    return loaders;
   }
+  return loaders;
 };
 
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
       '@core': path.resolve(__dirname, 'src/core'),
     },
   },
-  devtool: isDev ? 'source-map' : null,
+  devtool: isDev ? 'source-map' : false,
   devServer: {
     port: 3000,
     hot: isDev,
@@ -74,7 +74,7 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
-        use: {},
+        use: jsLoaders(),
       },
     ],
   },
